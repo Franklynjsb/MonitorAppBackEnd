@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 
     @Autowired
@@ -45,6 +46,11 @@ public class UsuarioController {
         iUsuarioService.saveUsuario(usuario);
 
         return usuario;
+    }
+
+    @GetMapping("/usuarios/get/perfil")
+    public Usuario findUsuario() {
+        return iUsuarioService.findUsuario(1);
     }
 
 
