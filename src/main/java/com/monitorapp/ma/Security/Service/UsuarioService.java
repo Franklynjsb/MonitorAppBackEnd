@@ -1,12 +1,11 @@
 package com.monitorapp.ma.Security.Service;
 
 
-import com.monitorapp.ma.Security.Entity.Usuario;
-import com.monitorapp.ma.Security.Repository.IUsuarioRepository;
-import jakarta.transaction.Transactional;
+import com.monitorapp.ma.Security.Entity.UsuarioSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -14,9 +13,9 @@ import java.util.Optional;
 public class UsuarioService {
 
     @Autowired
-    IUsuarioRepository iUsuarioRepository;
+    com.monitorapp.ma.Security.Repository.iUsuarioRepository iUsuarioRepository;
 
-    public Optional<Usuario> getByNombreUsuario (String nombreUsuario){
+    public Optional<UsuarioSecurity> getByNombreUsuario (String nombreUsuario){
         return iUsuarioRepository.findByNombreUsuario(nombreUsuario);
     }
 
@@ -25,11 +24,13 @@ public class UsuarioService {
     }
 
     public boolean existsByEmail(String email){
+
         return iUsuarioRepository.existsByEmail(email);
     }
 
-    public void save(Usuario usuario){
-        iUsuarioRepository.save(usuario);
+    public void save(UsuarioSecurity usuarioSecurity){
+
+        iUsuarioRepository.save(usuarioSecurity);
     }
 
 }

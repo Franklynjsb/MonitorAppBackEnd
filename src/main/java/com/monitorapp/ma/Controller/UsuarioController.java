@@ -4,6 +4,7 @@ package com.monitorapp.ma.Controller;
 import com.monitorapp.ma.Entity.Usuario;
 import com.monitorapp.ma.Interface.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,19 +21,21 @@ public class UsuarioController {
         return iUsuarioService.getUsuario();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("usuarios/create")
     public String createUsuario(@RequestBody Usuario usuario) {
         iUsuarioService.saveUsuario(usuario);
         return "El usuario fue creada correctamente";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("usuarios/delete/{id}")
     public String deleteUsuario(@PathVariable Integer id) {
         iUsuarioService.deletePersona(id);
         return "El usuario fue eliminado correctamente";
     }
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("usuarios/edit/{id}")
     public Usuario editUsuario(@PathVariable Integer id,
                                @RequestParam("nombre") String nuevoNombre,
@@ -48,9 +51,9 @@ public class UsuarioController {
         return usuario;
     }
 
-    @GetMapping("/usuarios/get/perfil")
-    public Usuario findUsuario() {
-        return iUsuarioService.findUsuario(1);
+    @GetMapping("/usuarios/get/perfil/{id}")
+    public Usuario findUsuario(@PathVariable Integer id) {
+        return iUsuarioService.findUsuario(id);
     }
 
 

@@ -27,23 +27,21 @@ public class Administrador implements UserDetails {
         this.authorities = authorities;
     }
 
-    //Metodo público para construir el usuario
-    public static Administrador build(Usuario usuario) {
-        List<GrantedAuthority> authorities = usuario.getRoles()
+    //Método público para construir el usuario
+    public static Administrador build(UsuarioSecurity usuarioSecurity) {
+        List<GrantedAuthority> authorities = usuarioSecurity.getRoles()
                 .stream().map(rol -> new SimpleGrantedAuthority(rol.getRolNombre()
                         .name())).collect(Collectors.toList());
 
         return new Administrador(
-                usuario.getNombre(),
-                usuario.getNombreUsuario(),
-                usuario.getEmail(),
-                usuario.getPassword(),
+                usuarioSecurity.getNombre(),
+                usuarioSecurity.getNombreUsuario(),
+                usuarioSecurity.getEmail(),
+                usuarioSecurity.getPassword(),
                 authorities);
     }
 
     //Métodos implementados en UserDetails (métodos abstractos)
-
-
     @Override
     public boolean isAccountNonExpired() {
         //Está logeado

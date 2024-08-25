@@ -2,7 +2,7 @@ package com.monitorapp.ma.Security.Service;
 
 
 import com.monitorapp.ma.Security.Entity.Administrador;
-import com.monitorapp.ma.Security.Entity.Usuario;
+import com.monitorapp.ma.Security.Entity.UsuarioSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,9 +18,9 @@ public class UserDetailsImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
 
-        Usuario usuario = usuarioService.getByNombreUsuario(nombreUsuario).get();
+        UsuarioSecurity usuarioSecurity = usuarioService.getByNombreUsuario(nombreUsuario).get();
 
-        return Administrador.build(usuario);
+        return Administrador.build(usuarioSecurity);
 
     }
 }

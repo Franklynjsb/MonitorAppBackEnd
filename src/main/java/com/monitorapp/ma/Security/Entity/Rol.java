@@ -1,8 +1,9 @@
 package com.monitorapp.ma.Security.Entity;
 
 import com.monitorapp.ma.Security.Enums.RolNombre;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Rol {

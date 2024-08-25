@@ -1,13 +1,13 @@
 package com.monitorapp.ma.Security.Entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Usuario {
+public class UsuarioSecurity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,10 @@ public class Usuario {
 
     //Constructores
 
-    public Usuario() {
+    public UsuarioSecurity() {
     }
 
-    public Usuario(String nombre, String nombreUsuario, String email, String password) {
+    public UsuarioSecurity(String nombre, String nombreUsuario, String email, String password) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
