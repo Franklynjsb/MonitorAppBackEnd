@@ -2,6 +2,7 @@ package com.monitorapp.ma.Security.Service;
 
 
 import com.monitorapp.ma.Security.Entity.UsuarioSecurity;
+import com.monitorapp.ma.Security.Repository.iUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,24 +14,22 @@ import java.util.Optional;
 public class UsuarioService {
 
     @Autowired
-    com.monitorapp.ma.Security.Repository.iUsuarioRepository iUsuarioRepository;
+    iUsuarioRepository iusuarioRepository;
 
     public Optional<UsuarioSecurity> getByNombreUsuario (String nombreUsuario){
-        return iUsuarioRepository.findByNombreUsuario(nombreUsuario);
+        return iusuarioRepository.findByNombreUsuario(nombreUsuario);
     }
 
     public boolean existsByNombreUsuario(String nombreUsuario){
-        return iUsuarioRepository.existsByNombreUsuario(nombreUsuario);
+        return iusuarioRepository.existsByNombreUsuario(nombreUsuario);
     }
 
     public boolean existsByEmail(String email){
-
-        return iUsuarioRepository.existsByEmail(email);
+        return iusuarioRepository.existsByEmail(email);
     }
 
     public void save(UsuarioSecurity usuarioSecurity){
-
-        iUsuarioRepository.save(usuarioSecurity);
+        iusuarioRepository.save(usuarioSecurity);
     }
 
 }
