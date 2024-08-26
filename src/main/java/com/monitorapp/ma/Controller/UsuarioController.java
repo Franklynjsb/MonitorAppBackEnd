@@ -21,21 +21,18 @@ public class UsuarioController {
         return iUsuarioService.getUsuario();
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("usuarios/create")
     public String createUsuario(@RequestBody Usuario usuario) {
         iUsuarioService.saveUsuario(usuario);
         return "El usuario fue creada correctamente";
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("usuarios/delete/{id}")
     public String deleteUsuario(@PathVariable Integer id) {
         iUsuarioService.deletePersona(id);
         return "El usuario fue eliminado correctamente";
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("usuarios/edit/{id}")
     public Usuario editUsuario(@PathVariable Integer id,
                                @RequestParam("nombre") String nuevoNombre,

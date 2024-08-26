@@ -63,7 +63,7 @@ public class CPlanta {
         return new ResponseEntity(new Mensaje("La planta fue actualizada!"), HttpStatus.OK);
     }
 
-    @DeleteMapping("planta/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if(!sPlanta.existsById(id)){
             return new ResponseEntity(new Mensaje("El id no existe"), HttpStatus.BAD_REQUEST);
